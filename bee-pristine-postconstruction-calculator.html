@@ -122,14 +122,12 @@ input[type=number]:focus,select:focus,input[type=text]:focus{border-color:#E87C2
   <div class="header-title">Post Construction Estimate Calculator</div>
   <div class="header-sub">Rough Clean · Mid Clean · Final Clean · Bundle · Live profit breakdown</div>
 </div>
-
 <div class="tab-bar">
   <button class="tab-btn active" onclick="switchTab('rough',this)">🏗️ Rough Clean</button>
   <button class="tab-btn" onclick="switchTab('mid',this)">🧱 Mid Clean</button>
   <button class="tab-btn" onclick="switchTab('final',this)">✨ Final Clean</button>
   <button class="tab-btn" onclick="switchTab('bundle',this)">📦 Bundle</button>
 </div>
-
 <!-- ROUGH -->
 <div class="tab-content active" id="tab-rough">
   <div class="scope-box">
@@ -147,7 +145,7 @@ input[type=number]:focus,select:focus,input[type=text]:focus{border-color:#E87C2
     <div class="form-title">Job Details</div>
     <div class="form-grid">
       <div class="field"><label>Square Footage</label><input type="number" id="r-sqft" placeholder="e.g. 2500" min="0" step="50" oninput="resetAndCalc('r')"></div>
-      <div class="field"><label>Rate per sq ft ($)</label><input type="number" id="r-rate" value="0.15" min="0.01" max="10" step="0.01" oninput="resetAndCalc('r')"></div>
+      <div class="field"><label>Rate per sq ft ($)</label><input type="number" id="r-rate" value="0.20" min="0.01" max="10" step="0.01" oninput="resetAndCalc('r')"></div>
       <div class="field"><label>Crew Size</label>
         <select id="r-crew" onchange="resetAndCalc('r')">
           <option value="2" selected>2 cleaners</option><option value="3">3 cleaners</option><option value="4">4 cleaners</option><option value="5">5 cleaners</option><option value="6">6 cleaners</option><option value="7">7 cleaners</option><option value="8">8 cleaners</option><option value="9">9 cleaners</option><option value="10">10 cleaners</option>
@@ -172,10 +170,9 @@ input[type=number]:focus,select:focus,input[type=text]:focus{border-color:#E87C2
       </div>
     </div>
   </div>
-  <div class="form-card" id="r-labor-card" style="display:none"><div class="form-title">Labor Rate Per Cleaner</div><div id="r-labor-grid" class="labor-grid"></div><div style="margin-top:8px;font-size:11px;color:#9CA3AF;">Rates update automatically when crew size changes.</div></div>
+  <div class="form-card" id="r-labor-card" style="display:none"><div class="form-title">Labor Rate Per Cleaner</div><div id="r-labor-grid" class="labor-grid"></div><div class="field" style="margin-top:12px;max-width:240px;"><label>Labor markup ($/hr per cleaner)</label><input type="number" id="r-markup" value="6.00" min="0" max="50" step="0.50" oninput="recalcKeepPrice('r')"></div><div style="margin-top:8px;font-size:11px;color:#9CA3AF;">Rates update automatically when crew size changes. Markup is added to your quote so labor also contributes profit margin.</div></div>
   <div id="r-output"><div class="placeholder"><span style="font-size:32px;display:block;margin-bottom:10px">🐝</span>Enter square footage to generate your Rough Clean estimate</div></div>
 </div>
-
 <!-- MID -->
 <div class="tab-content" id="tab-mid">
   <div class="scope-box">
@@ -194,7 +191,7 @@ input[type=number]:focus,select:focus,input[type=text]:focus{border-color:#E87C2
     <div class="form-title">Job Details</div>
     <div class="form-grid">
       <div class="field"><label>Square Footage</label><input type="number" id="m-sqft" placeholder="e.g. 2500" min="0" step="50" oninput="resetAndCalc('m')"></div>
-      <div class="field"><label>Rate per sq ft ($)</label><input type="number" id="m-rate" value="0.20" min="0.01" max="10" step="0.01" oninput="resetAndCalc('m')"></div>
+      <div class="field"><label>Rate per sq ft ($)</label><input type="number" id="m-rate" value="0.25" min="0.01" max="10" step="0.01" oninput="resetAndCalc('m')"></div>
       <div class="field"><label>Crew Size</label>
         <select id="m-crew" onchange="resetAndCalc('m')">
           <option value="2" selected>2 cleaners</option><option value="3">3 cleaners</option><option value="4">4 cleaners</option><option value="5">5 cleaners</option><option value="6">6 cleaners</option><option value="7">7 cleaners</option><option value="8">8 cleaners</option><option value="9">9 cleaners</option><option value="10">10 cleaners</option>
@@ -219,10 +216,9 @@ input[type=number]:focus,select:focus,input[type=text]:focus{border-color:#E87C2
       </div>
     </div>
   </div>
-  <div class="form-card" id="m-labor-card" style="display:none"><div class="form-title">Labor Rate Per Cleaner</div><div id="m-labor-grid" class="labor-grid"></div><div style="margin-top:8px;font-size:11px;color:#9CA3AF;">Rates update automatically when crew size changes.</div></div>
+  <div class="form-card" id="m-labor-card" style="display:none"><div class="form-title">Labor Rate Per Cleaner</div><div id="m-labor-grid" class="labor-grid"></div><div class="field" style="margin-top:12px;max-width:240px;"><label>Labor markup ($/hr per cleaner)</label><input type="number" id="m-markup" value="6.00" min="0" max="50" step="0.50" oninput="recalcKeepPrice('m')"></div><div style="margin-top:8px;font-size:11px;color:#9CA3AF;">Rates update automatically when crew size changes. Markup is added to your quote so labor also contributes profit margin.</div></div>
   <div id="m-output"><div class="placeholder"><span style="font-size:32px;display:block;margin-bottom:10px">🐝</span>Enter square footage to generate your Mid Clean estimate</div></div>
 </div>
-
 <!-- FINAL -->
 <div class="tab-content" id="tab-final">
   <div class="scope-box">
@@ -243,7 +239,7 @@ input[type=number]:focus,select:focus,input[type=text]:focus{border-color:#E87C2
     <div class="form-title">Job Details</div>
     <div class="form-grid">
       <div class="field"><label>Square Footage</label><input type="number" id="f-sqft" placeholder="e.g. 2500" min="0" step="50" oninput="resetAndCalc('f')"></div>
-      <div class="field"><label>Rate per sq ft ($)</label><input type="number" id="f-rate" value="0.375" min="0.01" max="10" step="0.01" oninput="resetAndCalc('f')"></div>
+      <div class="field"><label>Rate per sq ft ($)</label><input type="number" id="f-rate" value="0.50" min="0.01" max="10" step="0.01" oninput="resetAndCalc('f')"></div>
       <div class="field"><label>Crew Size</label>
         <select id="f-crew" onchange="resetAndCalc('f')">
           <option value="2" selected>2 cleaners</option><option value="3">3 cleaners</option><option value="4">4 cleaners</option><option value="5">5 cleaners</option><option value="6">6 cleaners</option><option value="7">7 cleaners</option><option value="8">8 cleaners</option><option value="9">9 cleaners</option><option value="10">10 cleaners</option>
@@ -268,10 +264,9 @@ input[type=number]:focus,select:focus,input[type=text]:focus{border-color:#E87C2
       </div>
     </div>
   </div>
-  <div class="form-card" id="f-labor-card" style="display:none"><div class="form-title">Labor Rate Per Cleaner</div><div id="f-labor-grid" class="labor-grid"></div><div style="margin-top:8px;font-size:11px;color:#9CA3AF;">Rates update automatically when crew size changes.</div></div>
+  <div class="form-card" id="f-labor-card" style="display:none"><div class="form-title">Labor Rate Per Cleaner</div><div id="f-labor-grid" class="labor-grid"></div><div class="field" style="margin-top:12px;max-width:240px;"><label>Labor markup ($/hr per cleaner)</label><input type="number" id="f-markup" value="6.00" min="0" max="50" step="0.50" oninput="recalcKeepPrice('f')"></div><div style="margin-top:8px;font-size:11px;color:#9CA3AF;">Rates update automatically when crew size changes. Markup is added to your quote so labor also contributes profit margin.</div></div>
   <div id="f-output"><div class="placeholder"><span style="font-size:32px;display:block;margin-bottom:10px">🐝</span>Enter square footage to generate your Final Clean estimate</div></div>
 </div>
-
 <!-- BUNDLE -->
 <div class="tab-content" id="tab-bundle">
   <div class="form-card">
@@ -324,27 +319,24 @@ input[type=number]:focus,select:focus,input[type=text]:focus{border-color:#E87C2
       </div>
     </div>
   </div>
-  <div class="form-card" id="b-labor-card" style="display:none"><div class="form-title">Labor Rate Per Cleaner</div><div id="b-labor-grid" class="labor-grid"></div><div style="margin-top:8px;font-size:11px;color:#9CA3AF;">Rates update automatically when crew size changes.</div></div>
+  <div class="form-card" id="b-labor-card" style="display:none"><div class="form-title">Labor Rate Per Cleaner</div><div id="b-labor-grid" class="labor-grid"></div><div class="field" style="margin-top:12px;max-width:240px;"><label>Labor markup ($/hr per cleaner)</label><input type="number" id="b-markup" value="6.00" min="0" max="50" step="0.50" oninput="recalcKeepPrice('b')"></div><div style="margin-top:8px;font-size:11px;color:#9CA3AF;">Rates update automatically when crew size changes. Markup is added to your quote so labor also contributes profit margin.</div></div>
   <div id="b-output"><div class="placeholder"><span style="font-size:32px;display:block;margin-bottom:10px">🐝</span>Select at least 2 stages and enter square footage to generate your bundle estimate</div></div>
 </div>
-
 <div class="footer">
   <strong>Bee Pristine</strong> &nbsp;·&nbsp; 832-843-1948 &nbsp;·&nbsp; hello@beepristine.com &nbsp;·&nbsp; Houston, TX
   <br><br>Post construction pricing is based on walkthrough assessment. Final quote may vary. Additional time beyond scope billed at $55.00/hr.
 </div>
 </div>
-
 <script>
 const TAX=0.0825;
 function fmt(n){return"$"+Math.round(n).toLocaleString()}
 function fmtFull(n){const p=n.toFixed(2).split(".");return"$"+p[0].replace(/\B(?=(\d{3})+(?!\d))/g,",")+"."+p[1]}
 function fmtTime(h){const hr=Math.floor(h),mn=Math.round((h-hr)*60);if(!mn)return hr+"h";if(!hr)return mn+"min";return hr+"h "+mn+"min"}
-
 const TIME_RATES={r:1.5,m:2.0,f:2.5};
-const DEFAULT_RATES={r:0.15,m:0.20,f:0.375};
+const DEFAULT_RATES={r:0.20,m:0.25,f:0.50};
+const DEFAULT_MARKUP=6;
 const STAGE_LABELS={r:"Rough Clean",m:"Mid Clean",f:"Final Clean"};
 const STAGE_ICONS={r:"🏗️",m:"🧱",f:"✨"};
-
 // Phase-specific extras
 const EXTRAS={
   r:[
@@ -382,14 +374,12 @@ const EXTRAS={
     {id:"garage",label:"Garage sweep and cleanup",price:75,time:0.75},
   ]
 };
-
 let manualPrice={r:null,m:null,f:null,b:null};
 let manualTime={r:null,m:null,f:null};
 let autoPrice={r:0,m:0,f:0,b:0};
 let lastCost={r:0,m:0,f:0,b:0};
 let wtRowCounters={r:0,m:0,f:0,b:0};
 let bundleManualTime=null;
-
 function switchTab(id,btn){
   document.querySelectorAll(".tab-content").forEach(t=>t.classList.remove("active"));
   document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
@@ -397,7 +387,6 @@ function switchTab(id,btn){
   btn.classList.add("active");
   resetTab(id);
 }
-
 function resetTab(id){
   const prefixes={rough:"r",mid:"m",final:"f",bundle:"b"};
   const p=prefixes[id];if(!p)return;
@@ -410,12 +399,14 @@ function resetTab(id){
     const disc=document.getElementById("b-discount");if(disc)disc.value="0";
     const crew=document.getElementById("b-crew");if(crew)crew.value="2";
     const bt=document.getElementById("b-time");if(bt){bt.value="";bt.placeholder="auto";}
+    const bmk=document.getElementById("b-markup");if(bmk)bmk.value=DEFAULT_MARKUP.toFixed(2);
     bundleManualTime=null;
   } else {
     const sq=document.getElementById(p+"-sqft");if(sq)sq.value="";
-    const rate=document.getElementById(p+"-rate");if(rate)rate.value=DEFAULT_RATES[p];
+    const rate=document.getElementById(p+"-rate");if(rate)rate.value=DEFAULT_RATES[p].toFixed(2);
     const crew=document.getElementById(p+"-crew");if(crew)crew.value="2";
     const tm=document.getElementById(p+"-time");if(tm){tm.value="";tm.placeholder="auto";}
+    const mk=document.getElementById(p+"-markup");if(mk)mk.value=DEFAULT_MARKUP.toFixed(2);
     manualTime[p]=null;
   }
   manualPrice[p]=null;
@@ -436,7 +427,6 @@ function resetTab(id){
     out.innerHTML=`<div class="placeholder"><span style="font-size:32px;display:block;margin-bottom:10px">🐝</span>${msg}</div>`;
   }
 }
-
 function buildExtras(prefix){
   const grid=document.getElementById(prefix+"-extras-grid");if(!grid)return;
   grid.innerHTML="";
@@ -453,9 +443,7 @@ function buildExtras(prefix){
     grid.appendChild(div);
   });
 }
-
 function onExtraChange(prefix){manualPrice[prefix]=null;if(prefix==="b"){resetBundlePrice();calcBundle();}else calc(prefix);}
-
 function getExtrasTotal(prefix){
   let total=0,time=0;const lines=[];
   (EXTRAS[prefix]||[]).forEach(e=>{
@@ -464,7 +452,6 @@ function getExtrasTotal(prefix){
   });
   return{total,time,lines};
 }
-
 function addWtRow(prefix){
   const container=document.getElementById(prefix+"-wt-rows");
   const id=++wtRowCounters[prefix];
@@ -494,7 +481,6 @@ function getWtTotal(prefix){
   });
   return{total,lines};
 }
-
 function buildLaborInputs(crew,prefix){
   const grid=document.getElementById(prefix+"-labor-grid");if(!grid)return;
   const existing={};for(let i=1;i<=10;i++){const el=document.getElementById(prefix+"-l"+i);if(el)existing[i]=parseFloat(el.value)||24;}
@@ -522,7 +508,6 @@ function updateTax(prefix){
   [[prefix+"-tax-before",fmtFull(dp)],[prefix+"-tax-amt","+ $"+t.toFixed(2)],[prefix+"-tax-total",fmtFull(w)],[prefix+"-metric-quote",fmtFull(dp)],[prefix+"-metric-tax","+ $"+t.toFixed(2)+" tax = "+fmtFull(w)],[prefix+"-metric-profit",fmt(np)],[prefix+"-metric-margin",nm+"% margin"],[prefix+"-profit-row",fmt(np)+" ("+nm+"% margin)"]].forEach(([id,v])=>{const el=document.getElementById(id);if(el)el.textContent=v;});
   const pm=document.getElementById(prefix+"-metric-profit");if(pm)pm.className="metric-val "+(nm>=40?"green":"amber");
 }
-
 function calc(prefix){
   const sqft=parseFloat(document.getElementById(prefix+"-sqft").value)||0;
   const rate=parseFloat(document.getElementById(prefix+"-rate").value)||DEFAULT_RATES[prefix];
@@ -531,14 +516,17 @@ function calc(prefix){
   if(!sqft||sqft<=0){out.innerHTML=`<div class="placeholder"><span style="font-size:32px;display:block;margin-bottom:10px">🐝</span>Enter square footage to generate your ${STAGE_LABELS[prefix]} estimate</div>`;return;}
   buildLaborInputs(crew,prefix);
   const{combined:combinedRate,details:laborDetails}=getLaborRates(crew,prefix);
+  const markupInput=parseFloat(document.getElementById(prefix+"-markup").value);
+  const markup=isNaN(markupInput)?DEFAULT_MARKUP:markupInput;
   const sqftPrice=sqft*rate;
   const{total:extTotal,lines:extLines}=getExtrasTotal(prefix);
   const{total:wtTotal,lines:wtLines}=getWtTotal(prefix);
-  const basePrice=sqftPrice+extTotal+wtTotal;
   const autoHrs=Math.max((sqft/1000)*TIME_RATES[prefix],2);
   const tEl=document.getElementById(prefix+"-time");
   if(tEl&&manualTime[prefix]===null){tEl.value=autoHrs.toFixed(2);}
   const hrs=manualTime[prefix]!==null?manualTime[prefix]:autoHrs;
+  const laborMarkupAmt=markup*crew*hrs;
+  const basePrice=sqftPrice+extTotal+wtTotal+laborMarkupAmt;
   const laborCost=combinedRate*hrs;
   const supplies=Math.round(sqft*0.004+15);
   const totalCost=laborCost+supplies;
@@ -561,6 +549,7 @@ function calc(prefix){
       <div class="detail-row"><span class="dl">Sq footage subtotal</span><span class="dv">${fmtFull(sqftPrice)}</span></div>
       ${extLines.length>0?`<div class="divider"></div>${extLines.map(e=>`<div class="detail-row"><span class="dl">${e.label}</span><span class="dv orange">+${fmtFull(e.price)}</span></div>`).join("")}<div class="detail-row"><span class="dl">Extras subtotal</span><span class="dv orange">+${fmtFull(extTotal)}</span></div>`:""}
       ${wtLines.length>0?`<div class="divider"></div>${wtLines.map(l=>`<div class="detail-row"><span class="dl">${l.desc} (${l.hrs}h @ $${l.rate}/hr)</span><span class="dv orange">+${fmtFull(l.amt)}</span></div>`).join("")}<div class="detail-row"><span class="dl">Walkthrough additions</span><span class="dv orange">+${fmtFull(wtTotal)}</span></div>`:""}
+      ${laborMarkupAmt>0?`<div class="detail-row"><span class="dl">Labor margin (${crew} × $${markup.toFixed(2)}/hr)</span><span class="dv orange">+${fmtFull(laborMarkupAmt)}</span></div>`:""}
       <div class="detail-row"><span class="dl">Calculated price</span><span class="dv orange" style="font-size:14px">${fmtFull(basePrice)}</span></div>
       ${buildEditPrice(dp,prefix)}
       ${buildTaxSection(dp,prefix)}
@@ -582,12 +571,10 @@ function calc(prefix){
     </div>
     ${nm<30?`<div class="warning-box">⚠️ Margin is below 30%. Consider raising your rate per sq ft.</div>`:""}`;
 }
-
 function toggleBundleStage(stage,el){const cb=document.getElementById("b-"+stage);cb.checked=!cb.checked;el.classList.toggle("selected",cb.checked);resetBundlePrice();calcBundle();}
 function onBundleTimeChange(){const el=document.getElementById("b-time");if(!el)return;const v=parseFloat(el.value);bundleManualTime=(!isNaN(v)&&v>0)?v:null;const saved=manualPrice["b"];calcBundle();if(saved!==null){manualPrice["b"]=saved;const oi=document.getElementById("b-price-override");if(oi)oi.value=saved.toFixed(2);updateTax("b");}}
 function resetBundleTime(){bundleManualTime=null;const el=document.getElementById("b-time");if(el){el.value="";el.placeholder="auto";}calcBundle();}
 function resetBundlePrice(){manualPrice["b"]=null;}
-
 function calcBundle(){
   const sqft=parseFloat(document.getElementById("b-sqft").value)||0;
   const crew=parseInt(document.getElementById("b-crew").value)||2;
@@ -601,18 +588,21 @@ function calcBundle(){
   if(!sqft||sqft<=0){out.innerHTML=`<div class="placeholder"><span style="font-size:32px;display:block;margin-bottom:10px">🐝</span>Enter square footage to generate your bundle estimate</div>`;return;}
   buildLaborInputs(crew,"b");
   const{combined:combinedRate,details:laborDetails}=getLaborRates(crew,"b");
+  const markupInput=parseFloat(document.getElementById("b-markup").value);
+  const markup=isNaN(markupInput)?DEFAULT_MARKUP:markupInput;
   let stageBreakdown=[],totalBase=0,totalTime=0;
-  if(roughSel){const p=sqft*0.15;totalBase+=p;totalTime+=(sqft/1000)*TIME_RATES["r"];stageBreakdown.push({label:"🏗️ Rough Clean",rate:0.15,price:p});}
-  if(midSel){const p=sqft*0.20;totalBase+=p;totalTime+=(sqft/1000)*TIME_RATES["m"];stageBreakdown.push({label:"🧱 Mid Clean",rate:0.20,price:p});}
-  if(finalSel){const p=sqft*0.375;totalBase+=p;totalTime+=(sqft/1000)*TIME_RATES["f"];stageBreakdown.push({label:"✨ Final Clean",rate:0.375,price:p});}
+  if(roughSel){const p=sqft*0.20;totalBase+=p;totalTime+=(sqft/1000)*TIME_RATES["r"];stageBreakdown.push({label:"🏗️ Rough Clean",rate:0.20,price:p});}
+  if(midSel){const p=sqft*0.25;totalBase+=p;totalTime+=(sqft/1000)*TIME_RATES["m"];stageBreakdown.push({label:"🧱 Mid Clean",rate:0.25,price:p});}
+  if(finalSel){const p=sqft*0.50;totalBase+=p;totalTime+=(sqft/1000)*TIME_RATES["f"];stageBreakdown.push({label:"✨ Final Clean",rate:0.50,price:p});}
   const{total:extTotal,lines:extLines}=getExtrasTotal("b");
   const{total:wtTotal,lines:wtLines}=getWtTotal("b");
   const discAmt=discPct>0?totalBase*(discPct/100):0;
-  const bundlePrice=totalBase-discAmt+extTotal+wtTotal;
   const autoHrsBundle=Math.max(totalTime/crew,2);
   const bTel=document.getElementById("b-time");
   if(bTel&&bundleManualTime===null){bTel.value=autoHrsBundle.toFixed(2);}
   const hrs=bundleManualTime!==null?bundleManualTime:autoHrsBundle;
+  const laborMarkupAmt=markup*crew*hrs;
+  const bundlePrice=totalBase-discAmt+extTotal+wtTotal+laborMarkupAmt;
   const laborCost=combinedRate*hrs;
   const supplies=Math.round(sqft*0.005+20);
   const totalCost=laborCost+supplies;
@@ -638,6 +628,7 @@ function calcBundle(){
       ${discPct>0?`<div class="detail-row"><span class="dl">Bundle discount (${discPct}% off)</span><span class="dv" style="color:#0F6E56">− ${fmtFull(discAmt)}</span></div>`:""}
       ${extLines.length>0?`<div class="divider"></div>${extLines.map(e=>`<div class="detail-row"><span class="dl">${e.label}</span><span class="dv orange">+${fmtFull(e.price)}</span></div>`).join("")}<div class="detail-row"><span class="dl">Extras subtotal</span><span class="dv orange">+${fmtFull(extTotal)}</span></div>`:""}
       ${wtLines.length>0?`<div class="divider"></div>${wtLines.map(l=>`<div class="detail-row"><span class="dl">${l.desc} (${l.hrs}h @ $${l.rate}/hr)</span><span class="dv orange">+${fmtFull(l.amt)}</span></div>`).join("")}<div class="detail-row"><span class="dl">Walkthrough additions</span><span class="dv orange">+${fmtFull(wtTotal)}</span></div>`:""}
+      ${laborMarkupAmt>0?`<div class="detail-row"><span class="dl">Labor margin (${crew} × $${markup.toFixed(2)}/hr)</span><span class="dv orange">+${fmtFull(laborMarkupAmt)}</span></div>`:""}
       <div class="detail-row"><span class="dl">Bundle price</span><span class="dv orange" style="font-size:14px">${fmtFull(bundlePrice)}</span></div>
       ${buildEditPrice(dp,"b")}
       ${buildTaxSection(dp,"b")}
@@ -659,7 +650,6 @@ function calcBundle(){
     </div>
     ${nm<30?`<div class="warning-box">⚠️ Margin is below 30%. Consider adjusting your rates or discount.</div>`:""}`;
 }
-
 // INIT
 ["r","m","f","b"].forEach(p=>buildExtras(p));
 </script>
